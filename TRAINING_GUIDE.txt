@@ -1,0 +1,252 @@
+================================================================================
+ STUTTERING DETECTION PROJECT - TRAINING GUIDE
+================================================================================
+
+PROJECT STATUS: 60% → 100% (Complete Option 1)
+
+WHAT'S READY:
+✓ 31,956 labeled audio clips (3 seconds each, 16kHz)
+✓ Speaker-isolated data splits (Train/Val/Test)
+✓ All audio files copied to processed_clips folder
+✓ Data verification complete (100% match)
+
+WHAT'S NEXT:
+→ Install required libraries
+→ Train models
+→ Generate results
+→ Complete thesis
+
+================================================================================
+ STEP 1: INSTALL REQUIRED LIBRARIES
+================================================================================
+
+This will take 10-15 minutes. Run in PowerShell:
+
+py -m pip install librosa pandas numpy scikit-learn xgboost matplotlib seaborn tqdm soundfile torch transformers datasets evaluate accelerate
+
+Or install from requirements.txt:
+
+py -m pip install -r requirements.txt
+
+================================================================================
+ STEP 2: VERIFY DATA (OPTIONAL)
+================================================================================
+
+Check if everything is ready:
+
+py verify_audio_files.py
+
+Expected output:
+- Total clips in CSV: 31,956
+- Total WAV files: 32,321
+- CSV entries with audio: 31,956 (100.0%)
+- Stutter: 14,712 (46.0%)
+- Fluent: 17,244 (54.0%)
+
+================================================================================
+ STEP 3: TRAIN HUBERT MODEL (DEEP LEARNING)
+================================================================================
+
+This is the main model using transfer learning from Facebook's HuBERT.
+
+Training time:
+- With GPU: 2-3 hours
+- With CPU: 8-12 hours (overnight recommended)
+
+Command:
+
+py train_transfer_hubert.py
+
+What it does:
+1. Loads pre-trained HuBERT model
+2. Fine-tunes on your stuttering data
+3. Evaluates on test set
+4. Saves best model to: best_hubert_stuttering_model/
+
+Expected results:
+- Test Accuracy: 85-92%
+- Test F1 Score: 0.83-0.90
+
+================================================================================
+ STEP 4: EXTRACT FEATURES (FOR TRADITIONAL ML)
+================================================================================
+
+Extract audio features using Global Average Pooling:
+
+py Gap_feature.py
+
+This creates:
+- gap_features_train.npy
+- gap_features_val.npy
+- gap_features_test.npy
+
+Time: 30-60 minutes
+
+================================================================================
+ STEP 5: FEATURE SELECTION (OPTIONAL)
+================================================================================
+
+Select best features using SelectKBest:
+
+py SelectKbest_feature_select.py
+
+This optimizes feature set for traditional ML models.
+
+Time: 5-10 minutes
+
+================================================================================
+ STEP 6: TRAIN HYBRID ENSEMBLE
+================================================================================
+
+Train 5 traditional ML models and create ensemble:
+
+py hybrid.py
+
+Models trained:
+1. XGBoost
+2. SVM
+3. Random Forest
+4. CNN
+5. BiLSTM
+
+Time: 1-2 hours
+
+Expected results:
+- Ensemble Accuracy: 80-88%
+- Individual model results saved
+
+================================================================================
+ STEP 7: BASELINE COMPARISON
+================================================================================
+
+Compare all models:
+
+py baseline_comparison.py
+
+Generates comparison charts and tables.
+
+Time: 5 minutes
+
+================================================================================
+ STEP 8: GENERATE THESIS REPORT
+================================================================================
+
+Create final results document:
+
+py generate_thesis_report.py
+
+This creates:
+- THESIS_RESULTS.txt (complete results)
+- Performance comparison tables
+- Model statistics
+
+================================================================================
+ QUICK START (RECOMMENDED ORDER)
+================================================================================
+
+For fastest results, run in this order:
+
+1. Install libraries (15 min):
+   py -m pip install -r requirements.txt
+
+2. Train HuBERT overnight (8-12 hours):
+   py train_transfer_hubert.py
+
+3. Next morning, extract features (1 hour):
+   py Gap_feature.py
+
+4. Train hybrid models (2 hours):
+   py hybrid.py
+
+5. Generate reports (5 min):
+   py baseline_comparison.py
+   py generate_thesis_report.py
+
+Total time: ~12-15 hours (mostly automated)
+
+================================================================================
+ TROUBLESHOOTING
+================================================================================
+
+Problem: "ModuleNotFoundError: No module named 'librosa'"
+Solution: Install libraries using pip install command above
+
+Problem: Training is very slow
+Solution: 
+- Close other programs
+- Run overnight
+- Consider using Google Colab with GPU
+
+Problem: Out of memory error
+Solution: 
+- Reduce BATCH_SIZE in train_transfer_hubert.py (line 23)
+- Change from 8 to 4 or 2
+
+Problem: CUDA out of memory
+Solution:
+- Reduce batch size
+- Or set device to CPU in training script
+
+================================================================================
+ EXPECTED FINAL RESULTS
+================================================================================
+
+After completing all steps, you will have:
+
+✓ HuBERT Model Results:
+  - Accuracy: 85-92%
+  - F1 Score: 0.83-0.90
+  - Saved model for deployment
+
+✓ Hybrid Ensemble Results:
+  - Accuracy: 80-88%
+  - 5 individual model performances
+  - Ensemble voting results
+
+✓ Comparison Charts:
+  - Model performance comparison
+  - Confusion matrices
+  - ROC curves
+
+✓ Thesis-Ready Documents:
+  - Complete methodology (already done)
+  - Results chapter (after training)
+  - Performance tables
+  - Visualizations
+
+================================================================================
+ THESIS COMPLETION
+================================================================================
+
+After training, you can write:
+
+Chapter 6: Results
+- Model performance metrics
+- Comparison with baselines
+- Confusion matrices
+- Error analysis
+
+Chapter 7: Discussion
+- Why HuBERT performed best
+- Hybrid ensemble benefits
+- Limitations and challenges
+
+Chapter 8: Conclusion
+- Summary of contributions
+- Future work recommendations
+
+Your thesis will be 100% COMPLETE! 🎓
+
+================================================================================
+ NEED HELP?
+================================================================================
+
+If you encounter any issues:
+1. Check error messages carefully
+2. Verify all files are in correct locations
+3. Make sure libraries are installed
+4. Check available disk space (need ~5GB free)
+
+Good luck with your training! 🚀
+
+================================================================================

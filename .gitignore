@@ -1,0 +1,54 @@
+# Audio files (too large for GitHub)
+processed_clips/
+raw_audio/
+*.wav
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Model files (too large)
+best_hubert_stuttering_model/
+*.pth
+*.pt
+*.h5
+*.pkl
+*.joblib
+
+# Feature files (large numpy arrays)
+*.npy
+gap_features_*.npy
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large data files
+*.csv.gz
+*.zip
+*.tar.gz
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp

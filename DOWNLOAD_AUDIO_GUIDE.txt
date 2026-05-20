@@ -1,0 +1,96 @@
+========================================
+HOW TO DOWNLOAD AUDIO CLIPS
+========================================
+
+OPTION 1: AUTOMATIC DOWNLOAD (Recommended)
+------------------------------------------
+
+Step 1: Install Required Tools
+-------------------------------
+You need two tools: wget and ffmpeg
+
+A. Install wget:
+   - Download: https://eternallybored.org/misc/wget/
+   - Or use: winget install GnuWin32.Wget
+   
+B. Install ffmpeg:
+   - Download: https://www.gyan.dev/ffmpeg/builds/
+   - Or use: winget install Gyan.FFmpeg
+
+Step 2: Download Audio Files
+-----------------------------
+Run these commands in order:
+
+# Download SEP-28k audio (28k clips, ~32 GB)
+py download_audio.py --episodes SEP-28k_episodes.csv --wavs raw_audio
+
+# Extract SEP-28k clips (creates 3-second clips, ~2.6 GB)
+py extract_clips.py --labels SEP-28k_labels.csv --wavs raw_audio --clips processed_clips --progress
+
+# Download FluencyBank audio (4k clips)
+py download_audio.py --episodes fluencybank_episodes.csv --wavs raw_audio
+
+# Extract FluencyBank clips
+py extract_clips.py --labels fluencybank_labels.csv --wavs raw_audio --clips processed_clips --progress
+
+ESTIMATED TIME: 4-8 hours (depends on internet speed)
+DISK SPACE NEEDED: ~35 GB (raw) + ~3 GB (clips) = 38 GB total
+
+
+OPTION 2: MANUAL DOWNLOAD (If automatic fails)
+-----------------------------------------------
+
+The audio comes from public podcasts. You can:
+1. Check SEP-28k_episodes.csv for podcast URLs
+2. Download episodes manually
+3. Use extract_clips.py to create 3-second clips
+
+
+OPTION 3: USE PRE-PROCESSED CLIPS (Fastest)
+--------------------------------------------
+
+If someone has already downloaded and processed the clips:
+1. Get the "processed_clips" folder
+2. Place it in your project directory
+3. Skip download steps, go directly to: py clean_data.py
+
+
+========================================
+CURRENT STATUS
+========================================
+
+✓ Labels downloaded: SEP-28k_labels.csv, fluencybank_labels.csv
+✓ Labels processed: processed_labels.csv (31,956 clips)
+✓ Annotator analysis: Complete
+
+✗ Audio files: NOT DOWNLOADED YET
+✗ wget: NOT INSTALLED
+✗ ffmpeg: NOT INSTALLED
+
+
+========================================
+NEXT STEPS AFTER DOWNLOAD
+========================================
+
+Once you have audio in "processed_clips/" folder:
+
+1. py clean_data.py              # Verify audio quality
+2. py split_data.py              # Create train/val/test splits
+3. py train_transfer_hubert.py   # Train HuBERT model (2-4 hours)
+4. py Gap_feature.py             # Extract features
+5. py SelectKbest_feature_select.py  # Select best features
+6. py hybrid.py                  # Train ensemble (1-2 hours)
+7. py generate_thesis_report.py  # Generate final report
+
+
+========================================
+ALTERNATIVE: WORK WITHOUT AUDIO
+========================================
+
+If you can't download audio right now, you can:
+1. Use the label analysis we already did
+2. Write your thesis methodology section
+3. Prepare your code documentation
+4. Download audio later for final experiments
+
+The label processing and annotator analysis are already complete!

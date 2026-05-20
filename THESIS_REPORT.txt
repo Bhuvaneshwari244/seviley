@@ -1,0 +1,80 @@
+================================================================================
+ STUTTERING DETECTION SYSTEM - COMPREHENSIVE REPORT
+================================================================================
+
+Generated: 2026-05-20 15:33:45
+
+
+
+================================================================================
+ 1. DATASET STATISTICS
+================================================================================
+
+Total Clips: 31,956
+  Stuttered: 14,712 (46.0%)
+  Fluent:    17,244 (54.0%)
+
+Dataset Distribution:
+  SEP-28k:      4,091
+  FluencyBank:  27,865
+
+
+================================================================================
+ 2. ANNOTATOR AGREEMENT ANALYSIS
+================================================================================
+
+Annotator Agreement Distribution:
+  Unanimous Stutter (3/3):   7994 (25.0%)
+  Majority Stutter  (2/3):   6718 (21.0%)
+  Majority Fluent   (1/3):   7726 (24.2%)
+  Unanimous Fluent  (0/3):   9518 (29.8%)
+
+Annotation Confidence Statistics:
+  Mean:   0.2998
+  Median: 0.0000
+
+Confidence Distribution:
+  High   (≥0.8):      903 (2.8%)
+  Medium (0.4-0.8):  13354 (41.8%)
+  Low    (<0.4):    17699 (55.4%)
+
+
+================================================================================
+ 3. FEATURE COMPARISON: HuBERT vs MFCC
+================================================================================
+
+[!] Run baseline_comparison.py first to generate this section.
+
+
+================================================================================
+ 4. HYBRID ENSEMBLE PERFORMANCE
+================================================================================
+
+[!] Run hybrid.py first to generate this section.
+
+
+================================================================================
+ 5. FEATURE EXTRACTION PIPELINE
+================================================================================
+
+
+================================================================================
+ 6. KEY CONTRIBUTIONS
+================================================================================
+
+1. Multi-Annotator Uncertainty Modeling
+   - Novel confidence scoring based on annotator agreement
+   - Addresses annotation ambiguity in stuttering detection
+
+2. Speaker-Isolated Data Splitting
+   - Zero data leakage using GroupShuffleSplit
+   - Ensures realistic generalization performance
+
+3. Cross-Dataset Hybrid Ensemble
+   - Combines SEP-28k (podcast) + FluencyBank (clinical)
+   - 5 diverse models: XGBoost, SVM, RF, CNN, BiLSTM
+   - Out-of-Fold validation prevents overfitting
+
+4. HuBERT Transfer Learning
+   - Fine-tuned facebook/hubert-base-ls960
+   - Global Average Pooling for fixed-length embeddings
