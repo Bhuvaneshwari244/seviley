@@ -77,8 +77,8 @@ stuttering-detection/
 
 ```bash
 # Clone the repository
-git clone https://github.com/Bhuvaneshwari244/Audio-Clips.git
-cd Audio-Clips
+git clone https://github.com/Bhuvaneshwari244/seviley.git
+cd seviley
 
 # Install dependencies
 pip install -r requirements.txt
@@ -164,7 +164,7 @@ See `requirements.txt` for complete list.
 
 Ensemble method: Majority voting with confidence weighting
 
-## � Results
+## 📊 Results
 
 ### HuBERT Model
 - **Test Accuracy:** 85-92%
@@ -177,7 +177,7 @@ Ensemble method: Majority voting with confidence weighting
 - **Test F1 Score:** 0.78-0.86
 - **Individual Model Performance:** See `THESIS_RESULTS.txt`
 
-## � Novel Contributions
+## 💡 Novel Contributions
 
 1. **Multi-Annotator Label Processing**
    - Majority voting algorithm with ≥50% threshold
@@ -252,7 +252,7 @@ This project is licensed under the MIT License.
 
 For questions or collaboration:
 - GitHub: [@Bhuvaneshwari244](https://github.com/Bhuvaneshwari244)
-- Repository: [Audio-Clips](https://github.com/Bhuvaneshwari244/Audio-Clips)
+- Repository: [seviley](https://github.com/Bhuvaneshwari244/seviley)
 
 ## 🎓 Citation
 
@@ -264,7 +264,7 @@ If you use this code in your research, please cite:
   author={Bhuvaneshwari},
   year={2026},
   publisher={GitHub},
-  url={https://github.com/Bhuvaneshwari244/Audio-Clips}
+  url={https://github.com/Bhuvaneshwari244/seviley}
 }
 ```
 
@@ -280,4 +280,4 @@ If you use this code in your research, please cite:
 
 **Status:** Ready for Training (60% Complete → 100% after training)
 
-**Last Updated:** May 20, 2026
+**Last Updated:** May 24, 2026
